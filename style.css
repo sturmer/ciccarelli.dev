@@ -1,0 +1,32 @@
+body {
+	text-align: center;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	background-color: darkgrey;
+}
+
+h1 {
+	font-size: 1.5em;
+	padding: 0;
+	margin: 0;
+}
+
+h2 {
+	font-size: 1em;
+	padding: 0;
+	margin: 0;
+}
+
+img {
+	margin-top: 5em;
+}
+
+a {
+	font-size: 0.8em;
+	transform: rotate(90deg)
+}
+
+.wrapper {
+  	display: grid;
+	grid-template-columns: 2fr repeat(2, 1fr);
+	column-gap: 1em;
+}
