@@ -1,12 +1,13 @@
+@import url("rouge.css");
+
 * {
   margin: 0;
   padding: 0;
-
-  font-family: Georgia, Palatino, serif;
 }
 
 body {
   background: #fff;
+  font-family: Georgia, Palatino, serif;
 }
 
 a {

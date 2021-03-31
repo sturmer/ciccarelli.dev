@@ -16,6 +16,7 @@ end
 #
 compile '/**/*.md' do
  filter :kramdown
+ filter :colorize_syntax
  layout '/default.*'
 
  if item.identifier =~ '**/index.*'

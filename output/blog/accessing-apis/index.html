@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>A Brand New Nanoc Site - Accessing APIs</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.22">
+  </head>
+  <body>
+    <div id="main">
+      <p>I was curious about all the great sites I know of releasing their API. Twitter, Google, Facebook, Yelp, are only a few examples of websites providing a way to access their services in a programmatic way. In this post, I have investigated a simple but very interesting API, offered by <a href="http://rottentomatoes.com" title="Rotten Tomatoes">Rotten Tomatoes</a>, a website about movies.</p>
+
+<!-- more -->
+
+<h3 id="before-coding">Before Coding</h3>
+<p>Apparently, most if not all the websites offering API access to their services, require you to register as a developer, in order to provide you with an API key. The registration form for Rotten Tomatoes can be found, for example, at the <a href="http://bit.ly/1eoIiOB" title="Rotten Tomatoes API">Developers’ page</a>.  Once you register an account and request an API key, you can use it to access the API. This kind of accountability is important, because the damage you can do by making tons of requests to a website can easily become an example of DoS attacks. The number of requests is limited, as well (5 per seconds and 10,000 per day).</p>
+
+<h3 id="the-poco-libraries">The POCO Libraries</h3>
+<p>In order to more easily manipulate HTTP requests and response, I have tried out the <a href="http://pocoproject.org/" title="POCO libraries">POCO libraries</a>, a nice set of wrappers around extremely useful features, that range from Base64 encoding/decoding to socket programming, to XML manipulation, to DBMS interactions. The simple code I provide here uses the <em>Net</em> classes, that offer useful abstractions like <code>HTTPRequest</code>, <code>HTTPResponse</code>, <code>HTMLForm</code>, and the likes.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="n">HTTPRequest</span> <span class="n">movierequest</span><span class="p">(</span><span class="n">HTTPRequest</span><span class="o">::</span><span class="n">HTTP_GET</span><span class="p">,</span>
+        <span class="s">"/api/public/v1.0/movies.json"</span><span class="p">,</span>
+        <span class="n">HTTPMessage</span><span class="o">::</span><span class="n">HTTP_1_1</span><span class="p">);</span>
+    <span class="n">HTMLForm</span> <span class="n">form</span><span class="p">;</span>
+    <span class="n">form</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">"apikey"</span><span class="p">,</span> <span class="s">"{your_api_key}"</span><span class="p">);</span> <span class="c1">// use your API key here!!</span>
+    <span class="n">form</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">"page"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">);</span>
+    <span class="n">form</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">"page_limit"</span><span class="p">,</span> <span class="s">"10"</span><span class="p">);</span>
+    <span class="n">form</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">"q"</span><span class="p">,</span> <span class="s">"Toy+Story"</span><span class="p">);</span>
+    <span class="n">form</span><span class="p">.</span><span class="n">prepareSubmit</span><span class="p">(</span><span class="n">movierequest</span><span class="p">);</span>
+
+    <span class="n">HTTPClientSession</span> <span class="n">s</span><span class="p">(</span><span class="s">"api.rottentomatoes.com"</span><span class="p">);</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">movierequest</span><span class="p">);</span>
+    <span class="n">HTTPResponse</span> <span class="n">resp</span><span class="p">;</span>
+    <span class="n">istream</span><span class="o">&amp;</span> <span class="n">response_stream</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">receiveResponse</span><span class="p">(</span><span class="n">resp</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">resp</span><span class="p">.</span><span class="n">getStatus</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">resp</span><span class="p">.</span><span class="n">getReason</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">ofstream</span> <span class="n">result</span><span class="p">(</span><span class="s">"toystory.txt"</span><span class="p">);</span>
+    <span class="n">Poco</span><span class="o">::</span><span class="n">StreamCopier</span><span class="o">::</span><span class="n">copyStream</span><span class="p">(</span><span class="n">response_stream</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">Exception</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">"Exception: "</span> <span class="o">&lt;&lt;</span> <span class="n">ex</span><span class="p">.</span><span class="n">className</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">" -- "</span> <span class="o">&lt;&lt;</span>
+      <span class="n">ex</span><span class="p">.</span><span class="n">displayText</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Let’s examine this code from closer. The complete source code is provided as a <a href="https://gist.github.com/sturmer/8755127">Github gist</a>.</p>
+
+<h3 id="making-a-get-request">Making a GET request</h3>
+<p>Let’s dissect the code presented above.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">HTTPRequest</span> <span class="nf">movierequest</span><span class="p">(</span><span class="n">HTTPRequest</span><span class="o">::</span><span class="n">HTTP_GET</span><span class="p">,</span>
+    <span class="s">"/api/public/v1.0/movies.json"</span><span class="p">,</span>
+    <span class="n">HTTPMessage</span><span class="o">::</span><span class="n">HTTP_1_1</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>We make an <code>HTTP GET</code> request in order to retrieve data from the web service by passing the proper parameters in a query string. The POCO libraries give us access to an <code>HTTPRequest</code>, that is constructed by passing it the HTTP method, the last part of the query url, and the version of HTTP, for which two enum values are provided, <code>HTTP_1_0</code> and <code>HTTP_1_1</code>, for versions 1.0 and 1.1.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">HTMLForm</span> <span class="n">form</span><span class="p">;</span>
+<span class="n">form</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">"apikey"</span><span class="p">,</span> <span class="s">"{your_api_key}"</span><span class="p">);</span>
+<span class="n">form</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">"page"</span><span class="p">,</span> <span class="s">"1"</span><span class="p">);</span>
+<span class="n">form</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">"page_limit"</span><span class="p">,</span> <span class="s">"10"</span><span class="p">);</span>
+<span class="n">form</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">"q"</span><span class="p">,</span> <span class="s">"Toy+Story"</span><span class="p">);</span>
+<span class="n">form</span><span class="p">.</span><span class="n">prepareSubmit</span><span class="p">(</span><span class="n">movierequest</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The <code>HTMLForm</code> is useful for passing parameters to the request. This
+is just done by providing key-value pairs for each relevant parameter. As you
+see, when we are done, we call a <code>prepareSubmit()</code> method to pass
+the values to the request object.</p>
+
+<h3 id="calling-the-server-reading-the-response">Calling the Server, Reading the Response</h3>
+<p>In order to call the API service, we need to instantiate a <code>HTTPClientSession</code> object, that is initialized with the name of the host providing the service.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">HTTPClientSession</span> <span class="nf">s</span><span class="p">(</span><span class="s">"api.rottentomatoes.com"</span><span class="p">);</span>
+<span class="n">s</span><span class="p">.</span><span class="n">sendRequest</span><span class="p">(</span><span class="n">movierequest</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The request is sent by calling the method <code>sendRequest()</code>. It is interesting that, in case we wanted to pass a body (for example in a POST request), we could have simply called the get <code>operator&lt;&lt;()</code>, like <code>s.sendRequest() &lt;&lt; req_body;</code>.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">HTTPResponse</span> <span class="n">resp</span><span class="p">;</span>
+<span class="n">istream</span><span class="o">&amp;</span> <span class="n">response_stream</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">receiveResponse</span><span class="p">(</span><span class="n">resp</span><span class="p">);</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">resp</span><span class="p">.</span><span class="n">getStatus</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">resp</span><span class="p">.</span><span class="n">getReason</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="n">ofstream</span> <span class="nf">result</span><span class="p">(</span><span class="s">"toystory.txt"</span><span class="p">);</span>
+<span class="n">Poco</span><span class="o">::</span><span class="n">StreamCopier</span><span class="o">::</span><span class="n">copyStream</span><span class="p">(</span><span class="n">response_stream</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Finally, we want to get the response. We instantiate an object of type <code>HTTPResponse</code>, not surprisingly, and then call the <code>receiveResponse()</code> on the client-initiated session object. The <code>StreamCopier</code> is useful to print the result into an output stream, that we can then parse at will.</p>
+
+<p>The resulting file looks something like the following:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="dl">"</span><span class="s2">total</span><span class="dl">"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">movies</span><span class="dl">"</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">770672122</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">title</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">Toy Story 3</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">year</span><span class="dl">"</span> <span class="p">:</span> <span class="mi">2010</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">mpaa_rating</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">G</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">runtime</span><span class="dl">"</span> <span class="p">:</span> <span class="mi">103</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">critics_consensus</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">Deftly blending comedy, adventure, and honest emotion...</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">release_dates</span><span class="dl">"</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="dl">"</span><span class="s2">theater</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">2010-06-18</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">dvd</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">2010-11-02</span><span class="dl">"</span><span class="p">},</span>
+        <span class="dl">"</span><span class="s2">ratings</span><span class="dl">"</span> <span class="p">:</span> <span class="p">...</span>
+</code></pre></div></div>
+
+<h3 id="conclusions">Conclusions</h3>
+<p>The POCO libraries have been an interesting surprise. They are very well documented, and simplify several tasks which prove fundamental when dealing with the network.</p>
+
+<p>I have tried also to access the Twitter API, but that deserves a post apart, because I had some problems with the authentication that is more sophisticated than Rotten Tomatoes’, also because of the huge amount of data that you can query. A great tool for debugging your programs can be found at the <a href="http://developer.rottentomatoes.com/io-docs">IO Docs page</a>, that generates the request string according to the parameter provided in a form, executes the request, and finally displays the result; a similar tool is present also for Twitter.</p>
+
+      <p>Tags: (none)</p>
+    </div>
+    <div id="sidebar">
+      <h2>Documentation</h2>
+      <ul>
+        <li><a href="https://nanoc.ws/doc/">Documentation</a></li>
+        <li><a href="https://nanoc.ws/doc/tutorial/">Tutorial</a></li>
+      </ul>
+      <h2>Community</h2>
+      <ul>
+        <li><a href="http://groups.google.com/group/nanoc/">Discussion group</a></li>
+        <li><a href="https://gitter.im/nanoc/nanoc">Gitter channel</a></li>
+        <li><a href="https://nanoc.ws/contributing/">Contributing</a></li>
+      </ul>
+    </div>
+  </body>
+</html>
