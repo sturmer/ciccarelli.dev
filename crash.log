@@ -1,0 +1,374 @@
+Crashlog created at 2021-03-31 22:39:02 +0300
+
+===== MESSAGE:
+
+Nanoc::DataSources::Filesystem::Errors::UnparseableMetadata: Could not parse metadata for content/about.md: (<unknown>): found character that cannot start any token while scanning for the next token at line 3 column 1
+
+===== STACK TRACE:
+
+  0. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem/parser.rb:65:in `rescue in parse_metadata'
+  1. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem/parser.rb:62:in `parse_metadata'
+  2. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem/parser.rb:54:in `parse_with_frontmatter'
+  3. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem/parser.rb:29:in `call'
+  4. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem.rb:412:in `parse'
+  5. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem.rb:157:in `read_proto_document'
+  6. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem.rb:186:in `block in load_objects'
+  7. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem.rb:223:in `block (2 levels) in each_content_meta_pair_in'
+  8. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem.rb:215:in `each'
+  9. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem.rb:215:in `block in each_content_meta_pair_in'
+  10. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem.rb:206:in `each'
+  11. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem.rb:206:in `each_content_meta_pair_in'
+  12. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem.rb:185:in `load_objects'
+  13. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib/nanoc/data_sources/filesystem.rb:75:in `items'
+  14. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-core-4.11.22/lib/nanoc/core/prefixed_data_source.rb:15:in `items'
+  15. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-core-4.11.22/lib/nanoc/core/aggregate_data_source.rb:15:in `each'
+  16. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-core-4.11.22/lib/nanoc/core/aggregate_data_source.rb:15:in `flat_map'
+  17. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-core-4.11.22/lib/nanoc/core/aggregate_data_source.rb:15:in `items'
+  18. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-core-4.11.22/lib/nanoc/core/site.rb:28:in `initialize'
+  19. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-core-4.11.22/lib/nanoc/core/site_loader.rb:36:in `new'
+  20. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-core-4.11.22/lib/nanoc/core/site_loader.rb:36:in `site_from_config'
+  21. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-core-4.11.22/lib/nanoc/core/site_loader.rb:9:in `new_from_cwd'
+  22. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli/command_runner.rb:60:in `load_site'
+  23. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli/commands/compile.rb:37:in `run_once'
+  24. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli/commands/compile.rb:25:in `run'
+  25. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli/command_runner.rb:15:in `block in call'
+  26. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli/error_handler.rb:15:in `block in handle_while'
+  27. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli/error_handler.rb:57:in `handle_while'
+  28. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli/error_handler.rb:15:in `handle_while'
+  29. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli/command_runner.rb:14:in `call'
+  30. /Users/gc/.rvm/gems/ruby-2.6.3/gems/cri-2.15.11/lib/cri/command_dsl.rb:294:in `block in runner'
+  31. /Users/gc/.rvm/gems/ruby-2.6.3/gems/cri-2.15.11/lib/cri/command.rb:362:in `run_this'
+  32. /Users/gc/.rvm/gems/ruby-2.6.3/gems/cri-2.15.11/lib/cri/command.rb:298:in `run'
+  33. /Users/gc/.rvm/gems/ruby-2.6.3/gems/cri-2.15.11/lib/cri/command.rb:316:in `run'
+  34. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli.rb:88:in `block in run'
+  35. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli/error_handler.rb:15:in `block in handle_while'
+  36. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli/error_handler.rb:57:in `handle_while'
+  37. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli/error_handler.rb:15:in `handle_while'
+  38. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib/nanoc/cli.rb:86:in `run'
+  39. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/bin/nanoc:18:in `<top (required)>'
+  40. /Users/gc/.rvm/gems/ruby-2.6.3/bin/nanoc:23:in `load'
+
+===== VERSION INFORMATION:
+
+Nanoc 4.11.22 © 2007–2019 Denis Defreyne.
+Running ruby 2.6.3 (2019-04-16) on x86_64-darwin19 with RubyGems 3.2.7.
+
+===== SYSTEM INFORMATION:
+
+Darwin colla.lan 20.3.0 Darwin Kernel Version 20.3.0: Thu Jan 21 00:07:06 PST 2021; root:xnu-7195.81.3~1/RELEASE_X86_64 x86_64
+
+===== INSTALLED GEMS:
+
+  abstract_type 0.0.7
+  activemodel 5.2.4.2, 5.2.4.3, 5.2.4.4, 6.0.3.4, 6.0.3.5
+  activerecord 5.2.4.2, 5.2.4.3, 5.2.4.4, 6.0.3.4, 6.0.3.5
+  activerecord-opentracing 0.2.0, 0.2.1, 0.3.0
+  activesupport 5.2.4.2, 5.2.4.3, 5.2.4.4, 6.0.3.4, 6.0.3.5
+  adamantium 0.2.0
+  addressable 2.4.0, 2.5.0, 2.7.0
+  adsf 1.4.5
+  after_commit_everywhere 0.1.2, 0.1.5
+  amq-protocol 2.3.0, 2.3.1
+  arel 9.0.0
+  asdf 0.5.0
+  ast 2.4.0
+  atomic 1.1.99
+  aws-eventstream 1.0.1, 1.0.3
+  aws-partitions 1.122.0, 1.216.0
+  aws-sdk-core 3.43.0, 3.68.0
+  aws-sdk-kms 1.13.0, 1.24.0
+  aws-sdk-s3 1.48.0
+  aws-sdk-sns 1.19.0
+  aws-sigv4 1.0.3, 1.1.0
+  axiom-types 0.1.1
+  backports 3.6.8, 3.15.0, 3.17.1
+  bcrypt 3.1.13, 3.1.15, 3.1.16
+  bigdecimal 1.4.1
+  bundler 1.17.3, 2.1.4, 2.2.3, 2.2.4, 2.2.5, 2.2.6, 2.2.7, 2.2.8, 2.2.10, 2.2.11, 2.2.15
+  bundler-audit 0.6.1
+  bundler-unload 1.0.2
+  bunny 2.11.0, 2.14.3, 2.15.0
+  chronic_duration 0.10.6
+  classy_enum 4.0.0
+  cmath 1.0.0
+  codeclimate-test-reporter 1.0.9
+  coderay 1.1.0, 1.1.1, 1.1.2, 1.1.3
+  coercible 1.0.0
+  colorator 1.1.0
+  colored 1.2
+  colorize 0.8.1
+  concord 0.1.5
+  concurrent-ruby 1.0.5, 1.1.6, 1.1.7
+  conf_loader 2.1.0
+  crack 0.4.3
+  cri 2.15.11
+  csv 3.0.9
+  daemons 1.2.6
+  database_cleaner 1.0.1, 1.7.0
+  date 2.0.0
+  dbm 1.0.0
+  ddmemoize 1.0.0
+  ddmetrics 1.0.1
+  ddplugin 1.0.3
+  deep_cloneable 3.0.0
+  descendants_tracker 0.0.4
+  deterministic 0.16.0
+  did_you_mean 1.3.0
+  diff-lcs 1.2.5, 1.3, 1.4.4
+  docile 1.1.5
+  dogstatsd-ruby 3.3.0, 4.5.0
+  dotenv 2.7.5
+  dry-configurable 0.8.3, 0.11.5, 0.11.6, 0.12.1
+  dry-container 0.7.2
+  dry-core 0.4.9, 0.5.0
+  dry-equalizer 0.2.2, 0.3.0
+  dry-inflector 0.1.2, 0.2.0
+  dry-initializer 3.0.4
+  dry-logic 0.6.1, 1.0.6
+  dry-schema 1.5.6
+  dry-struct 0.6.0, 1.3.0
+  dry-types 0.13.4, 1.4.0
+  dry-validation 1.5.6
+  e2mmap 0.1.0
+  em-proxy 0.1.9
+  em-websocket 0.5.2
+  equalizer 0.0.11
+  equivalent-xml 0.6.0
+  et-orbi 1.2.1
+  etc 1.0.1
+  eventmachine 1.0.9.1, 1.2.7
+  executable-hooks 1.6.0
+  factory_bot 4.8.2, 4.11.1
+  faraday 0.15.2, 1.1.0
+  faraday-tracer 0.6.0, 0.7.0
+  faraday_middleware 0.11.0.1, 0.12.2
+  fcntl 1.0.0
+  ffi 1.11.1, 1.14.2
+  fiddle 1.0.0
+  fileutils 1.1.0
+  formatador 0.2.5
+  forwardable 1.2.0
+  forwardable-extended 2.6.0
+  freddy 1.4.1, 1.7.0
+  fugit 1.2.2
+  gdbm 2.0.0
+  gem-wrappers 1.4.0
+  glia-errors 0.3.0
+  guard 2.14.1
+  guard-compat 1.2.1
+  guard-rspec 4.7.3
+  guard-rubocop 1.2.0
+  hamster 1.0.0, 3.0.0
+  hashdiff 0.3.6, 0.3.7
+  helpstation 0.1.5
+  http-parser-lite 0.6.0
+  http_parser.rb 0.6.0
+  i18n 1.8.2, 1.8.3, 1.8.5, 1.8.7, 1.8.8
+  ice_nine 0.11.2
+  iniparse 1.5.0
+  invoker 1.5.7
+  io-console 0.4.7
+  ipaddr 1.2.2
+  irb 1.0.0
+  jaro_winkler 1.5.4
+  jekyll 4.2.0
+  jekyll-feed 0.15.1
+  jekyll-sass-converter 2.1.0
+  jekyll-seo-tag 2.7.1
+  jekyll-watch 2.2.1
+  jmespath 1.4.0
+  json 2.1.0, 2.3.0, 2.5.1
+  json-schema 2.8.0
+  json_schema 0.20.9
+  jwt 1.5.6, 2.2.2
+  kramdown 2.3.0
+  kramdown-parser-gfm 1.1.0
+  lenjador 1.3.0, 2.0.0
+  liquid 4.0.3
+  listen 3.1.5, 3.4.0
+  logger 1.3.0
+  lru_redux 1.1.0
+  lumberjack 1.0.11
+  lupo 0.0.1
+  macaddr 1.7.2
+  matrix 0.1.0
+  memoist 0.16.0
+  memoizable 0.4.2
+  mercenary 0.4.0
+  method_source 0.8.2, 0.9.2, 1.0.0
+  mime-types 3.3
+  mime-types-data 3.2019.0904
+  mini_portile2 2.4.0
+  minima 2.5.1
+  minitest 5.11.3, 5.14.0, 5.14.1, 5.14.2, 5.14.3, 5.14.4
+  mock_redis 0.17.1
+  multi_json 1.12.1, 1.13.1, 1.14.1
+  multipart-post 2.0.0, 2.1.1
+  mustermann 1.0.3, 1.1.1
+  mutex_m 0.1.0
+  nanoc 4.11.22
+  nanoc-checking 1.0.1
+  nanoc-cli 4.11.22
+  nanoc-core 4.11.22
+  nanoc-deploying 1.0.1
+  nenv 0.3.0
+  net-telnet 0.2.0
+  nio4r 2.5.2
+  nokogiri 1.10.9
+  notiffany 0.1.1
+  numerizer 0.1.1
+  oj 2.18.5, 3.9.2, 3.10.6
+  openssl 2.1.2
+  opentracing 0.4.1, 0.5.0
+  opentracing_test_tracer 0.1.1
+  ostruct 0.1.0
+  parallel 1.19.1, 1.20.1
+  parallel_tests 2.13.0
+  parser 2.6.5.0, 2.7.0.5, 2.7.1.2
+  pastel 0.8.0
+  pathutil 0.16.2
+  pg 1.2.2, 1.2.3
+  phony 2.10.4
+  power_assert 1.1.3
+  powerpack 0.1.2
+  prime 0.1.0
+  process_handler 4.0.0
+  pry 0.10.1, 0.10.4, 0.12.2, 0.13.1, 0.14.0
+  pry-doc 1.1.0
+  psych 3.1.0
+  public_suffix 2.0.4, 4.0.6
+  puma 4.3.3, 4.3.5
+  raabro 1.1.6
+  rack 1.2.8, 1.6.12, 2.1.3, 2.1.4, 2.2.2
+  rack-contrib 1.6.0, 2.0.0
+  rack-cors 1.1.1
+  rack-parser 0.7.0
+  rack-protection 1.5.5, 2.0.5, 2.0.8.1
+  rack-test 0.6.3
+  rack-tracer 0.8.0
+  rainbow 3.0.0
+  rake 12.3.2, 13.0.1, 13.0.3
+  rantly 1.1.0
+  rb-fsevent 0.10.3, 0.10.4
+  rb-inotify 0.9.8, 0.10.1
+  rdoc 6.1.0
+  redis 3.3.2
+  redis-namespace 1.6.0
+  ref 2.0.0
+  rexml 3.1.9, 3.2.4
+  rouge 3.26.0
+  rspec 3.8.0, 3.9.0
+  rspec-core 3.8.0, 3.9.0, 3.9.2
+  rspec-expectations 3.8.2, 3.9.0, 3.9.2
+  rspec-mocks 3.8.0, 3.9.0, 3.9.1
+  rspec-support 3.8.0, 3.9.0, 3.9.3
+  rss 0.2.7
+  rubocop 0.54.0, 0.78.0, 0.80.1
+  rubocop-rspec 1.24.0, 1.37.1, 1.38.1
+  rubocop-salemove 0.0.4
+  ruby-progressbar 1.10.1
+  ruby2_keywords 0.0.2
+  ruby_dep 1.3.1
+  rubydns 0.8.5
+  rubygems-bundler 1.4.5
+  rubygems-update 3.2.7
+  rubyzip 2.3.0
+  rufus-scheduler 3.6.0
+  rvm 1.11.3.9
+  safe_yaml 1.0.4, 1.0.5
+  salestation 3.5.0, 3.5.1, 3.8.1, 4.0.3
+  sassc 2.4.0
+  scanf 1.0.0
+  sdbm 1.0.0
+  sentry-raven 2.9.0, 2.12.2
+  sentry-raven-in_memory_async_sender 0.1.0
+  shell 0.7
+  shellany 0.0.1
+  shoulda-matchers 3.1.1
+  simplecov 0.13.0
+  simplecov-html 0.10.2
+  sinatra 1.4.8, 2.0.5, 2.0.8.1
+  sinatra-contrib 1.4.7, 2.0.5, 2.0.8.1
+  sinatra-cross_origin 0.4.0
+  slim 2.0.3
+  slop 3.6.0
+  slow_enumerator_tools 1.1.0
+  stringio 0.0.2
+  strscan 1.0.0
+  substation 0.0.11
+  symbolizer 0.0.1
+  sync 0.5.0
+  systemu 2.6.5
+  temple 0.6.10
+  terminal-notifier 1.8.0, 2.0.0
+  terminal-table 2.0.0
+  test-unit 3.2.9
+  thin 1.7.2
+  thor 0.20.3, 1.0.1
+  thread 0.2.2
+  thread_safe 0.3.6
+  thwait 0.1.0
+  tilt 2.0.1, 2.0.7, 2.0.10
+  timecop 0.8.1
+  tomlrb 1.3.0
+  tracer 0.1.0
+  tty-color 0.6.0
+  tty-command 0.10.0
+  tty-platform 0.3.0
+  tty-which 0.4.2
+  tzinfo 1.2.6, 1.2.7, 1.2.8, 1.2.9
+  unicode-display_width 1.6.0, 1.6.1, 1.7.0
+  url_regex 0.0.3
+  uuid 2.3.9
+  uuid_validator 0.0.5
+  validate_url 1.0.2
+  virtus 1.0.5
+  webmock 3.0.1, 3.3.0
+  webrick 1.4.2
+  xmlrpc 0.3.0
+  yard 0.9.25
+  zeitwerk 2.4.2
+  zip_tricks 5.5.0
+  zipkin 1.6.0, 1.6.1, 1.6.2
+  zlib 1.0.0
+
+===== LOAD PATHS:
+
+  0. /Users/gc/.rvm/gems/ruby-2.6.3/gems/ref-2.0.0/lib
+  1. /Users/gc/.rvm/rubies/ruby-2.6.3/lib/ruby/gems/2.6.0/gems/did_you_mean-1.3.0/lib
+  2. /Users/gc/.rvm/gems/ruby-2.6.3/gems/colored-1.2/lib
+  3. /Users/gc/.rvm/gems/ruby-2.6.3/gems/cri-2.15.11/lib
+  4. /Users/gc/.rvm/gems/ruby-2.6.3/gems/ddmetrics-1.0.1/lib
+  5. /Users/gc/.rvm/gems/ruby-2.6.3/gems/ref-2.0.0/lib
+  6. /Users/gc/.rvm/gems/ruby-2.6.3/gems/ddmemoize-1.0.0/lib
+  7. /Users/gc/.rvm/gems/ruby-2.6.3/gems/ddplugin-1.0.3/lib
+  8. /Users/gc/.rvm/gems/ruby-2.6.3/gems/hamster-3.0.0/lib
+  9. /Users/gc/.rvm/gems/ruby-2.6.3/gems/json_schema-0.20.9/lib
+  10. /Users/gc/.rvm/gems/ruby-2.6.3/gems/slow_enumerator_tools-1.1.0/lib
+  11. /Users/gc/.rvm/gems/ruby-2.6.3/gems/tomlrb-1.3.0/lib
+  12. /Users/gc/.rvm/gems/ruby-2.6.3/gems/tty-platform-0.3.0/lib
+  13. /Users/gc/.rvm/gems/ruby-2.6.3/gems/zeitwerk-2.4.2/lib
+  14. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-core-4.11.22/lib
+  15. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-cli-4.11.22/lib
+  16. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-checking-1.0.1/lib
+  17. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-deploying-1.0.1/lib
+  18. /Users/gc/.rvm/gems/ruby-2.6.3/gems/tty-color-0.6.0/lib
+  19. /Users/gc/.rvm/gems/ruby-2.6.3/gems/pastel-0.8.0/lib
+  20. /Users/gc/.rvm/gems/ruby-2.6.3/gems/tty-command-0.10.0/lib
+  21. /Users/gc/.rvm/gems/ruby-2.6.3/gems/tty-which-0.4.2/lib
+  22. /Users/gc/.rvm/gems/ruby-2.6.3/gems/nanoc-4.11.22/lib
+  23. /Users/gc/.rvm/gems/ruby-2.6.3/gems/public_suffix-4.0.6/lib
+  24. /Users/gc/.rvm/gems/ruby-2.6.3/gems/addressable-2.7.0/lib
+  25. /Users/gc/.rvm/gems/ruby-2.6.3/gems/diff-lcs-1.4.4/lib
+  26. /Users/gc/.rvm/gems/ruby-2.6.3/gems/concurrent-ruby-1.1.7/lib/concurrent-ruby
+  27. /Users/gc/.rvm/gems/ruby-2.6.3/gems/parallel-1.20.1/lib
+  28. /Users/gc/.rvm/gems/ruby-2.6.3/gems/json-2.5.1/lib
+  29. /Users/gc/.rvm/gems/ruby-2.6.3/extensions/x86_64-darwin-19/2.6.0/json-2.5.1
+  30. /Users/gc/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0
+  31. /Users/gc/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0/x86_64-darwin19
+  32. /Users/gc/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby
+  33. /Users/gc/.rvm/rubies/ruby-2.6.3/lib/ruby/vendor_ruby/2.6.0
+  34. /Users/gc/.rvm/rubies/ruby-2.6.3/lib/ruby/vendor_ruby/2.6.0/x86_64-darwin19
+  35. /Users/gc/.rvm/rubies/ruby-2.6.3/lib/ruby/vendor_ruby
+  36. /Users/gc/.rvm/rubies/ruby-2.6.3/lib/ruby/2.6.0
+  37. /Users/gc/.rvm/rubies/ruby-2.6.3/lib/ruby/2.6.0/x86_64-darwin19
