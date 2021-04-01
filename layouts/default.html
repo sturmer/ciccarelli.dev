@@ -11,21 +11,21 @@
   <body>
     <div id="main">
       <h1><%= @item[:title] %></h1>
+      <% if @item.identifier != '/index.md' %>
       <p>Published: <%= @item[:created_at] %> | tags: <%= tags_for(@item) %></p>
+      <% end %>
       <%= yield %>
     </div>
     <div id="sidebar">
-      <h2>Documentation</h2>
+      <h2><%= link_to 'Home', '/' %></h2>
+      <hr />
+      <h2>Posts</h2>
       <ul>
-        <li><a href="https://nanoc.ws/doc/">Documentation</a></li>
-        <li><a href="https://nanoc.ws/doc/tutorial/">Tutorial</a></li>
+        <% sorted_articles.each do |post| %>
+          <li><%= link_to post[:title], post.path %></li>
+        <% end %>
       </ul>
-      <h2>Community</h2>
-      <ul>
-        <li><a href="http://groups.google.com/group/nanoc/">Discussion group</a></li>
-        <li><a href="https://gitter.im/nanoc/nanoc">Gitter channel</a></li>
-        <li><a href="https://nanoc.ws/contributing/">Contributing</a></li>
-      </ul>
+
     </div>
   </body>
 </html>
