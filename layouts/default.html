@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>A Brand New Nanoc Site - <%= @item[:title] %></title>
+    <title>ciccarelli.dev - <%= @item[:title] %></title>
     <link rel="stylesheet" href="/stylesheet.css">
 
     <!-- you don't need to keep this, but it's cool for stats! -->
@@ -10,8 +10,9 @@
   </head>
   <body>
     <div id="main">
+      <h1><%= @item[:title] %></h1>
+      <p>Published: <%= @item[:created_at] %> | tags: <%= tags_for(@item) %></p>
       <%= yield %>
-      <p>Tags: <%= tags_for(@item) %></p>
     </div>
     <div id="sidebar">
       <h2>Documentation</h2>

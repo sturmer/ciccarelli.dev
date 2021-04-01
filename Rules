@@ -10,10 +10,6 @@ compile '/**/*.html' do
   end
 end
 
-# This is an example rule that matches Markdown (.md) files, and filters them
-# using the :kramdown filter. It is commented out by default, because kramdown
-# is not bundled with Nanoc or Ruby.
-#
 compile '/**/*.md' do
  filter :kramdown
  filter :colorize_syntax
@@ -29,5 +25,7 @@ end
 compile '/**/*' do
   write item.identifier.to_s
 end
+
+passthrough '/gallery/*'
 
 layout '/**/*', :erb

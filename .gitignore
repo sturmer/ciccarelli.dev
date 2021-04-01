@@ -1,0 +1,4 @@
+Guardfile
+crash.log
+output/
+tmp/

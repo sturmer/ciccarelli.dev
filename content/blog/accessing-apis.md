@@ -1,8 +1,7 @@
 ---
 title: Accessing APIs
-pub_date: 2014-03-02
-twitter_handle: increatore
-author: Gian
+kind: article
+created_at: 2014-03-02
 ---
 
 I was curious about all the great sites I know of releasing their API. Twitter, Google, Facebook, Yelp, are only a few examples of websites providing a way to access their services in a programmatic way. In this post, I have investigated a simple but very interesting API, offered by [Rotten Tomatoes](http://rottentomatoes.com "Rotten Tomatoes"), a website about movies.
