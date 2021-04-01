@@ -2,6 +2,9 @@
 title: "Budgeter - Overview"
 kind: article
 created_at: 2020-04-24
+tags:
+ - project management
+ - personal projects
 ---
 
 <img src="/gallery/fabian-blank-piglet-unsplash.jpg" width="250" alt="Budgeter social photo (© Fabian Blank via Unsplash)" />

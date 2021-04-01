@@ -14,7 +14,7 @@ Apparently, most if not all the websites offering API access to their services, 
 ### The POCO Libraries
 In order to more easily manipulate HTTP requests and response, I have tried out the [POCO libraries](http://pocoproject.org/ "POCO libraries"), a nice set of wrappers around extremely useful features, that range from Base64 encoding/decoding to socket programming, to XML manipulation, to DBMS interactions. The simple code I provide here uses the *Net* classes, that offer useful abstractions like `HTTPRequest`, `HTTPResponse`, `HTMLForm`, and the likes.
 
-~~~ c++
+~~~ cpp
 int main()
 {
   try {
@@ -49,7 +49,7 @@ Let's examine this code from closer. The complete source code is provided as a [
 ### Making a GET request
 Let's dissect the code presented above.
 
-~~~ c++
+~~~ cpp
 HTTPRequest movierequest(HTTPRequest::HTTP_GET,
     "/api/public/v1.0/movies.json",
     HTTPMessage::HTTP_1_1);
@@ -75,14 +75,14 @@ the values to the request object.
 ### Calling the Server, Reading the Response
 In order to call the API service, we need to instantiate a `HTTPClientSession` object, that is initialized with the name of the host providing the service.
 
-~~~ c++
+~~~ cpp
 HTTPClientSession s("api.rottentomatoes.com");
 s.sendRequest(movierequest);
 ~~~
 
 The request is sent by calling the method `sendRequest()`. It is interesting that, in case we wanted to pass a body (for example in a POST request), we could have simply called the get `operator<<()`, like `s.sendRequest() << req_body;`.
 
-~~~ c++
+~~~ cpp
 HTTPResponse resp;
 istream& response_stream = s.receiveResponse(resp);
 cout << resp.getStatus() << " " << resp.getReason() << endl;
