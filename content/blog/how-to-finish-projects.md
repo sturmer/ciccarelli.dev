@@ -10,8 +10,6 @@ tags:
 
 In this post, I want to detail some of the criteria that have helped me pull through the effort of creating a small budgeting application. I also mean to explain why it's called Budgeter here, but `capital` on GitHub, and about the benefit of inconsistencies and how this is related to _The King's Speech_.
 
-<!-- more -->
-
 I like reporting, and I do it in several domains. One of them is budgeting. I use a spreadsheet to note down the expenses I have each month and try to separate them into categories, so I know that a given month I've spent, say, 100 euros in restaurants. I like to see trends and to take action in case something is not going according to the plans.
 
 In the spirit of learning, and since I love to have side projects, I started writing an application to do the exact same thing.

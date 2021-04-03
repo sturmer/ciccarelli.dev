@@ -4,11 +4,4 @@
   <h2><%= link_to 'Blog', '/blog/' %></h2>
   <h2><%= link_to 'Projects', '/projects/' %></h2>
   <h2><%= link_to 'About', '/about/' %></h2>
-  <hr />
-  <h2>Posts</h2>
-  <ul>
-    <% sorted_articles.each do |post| %>
-    <li><%= link_to post[:title], post.path %></li>
-    <% end %>
-  </ul>
 </div>

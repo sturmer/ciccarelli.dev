@@ -2,14 +2,15 @@
   <body>
     <div id="main">
       <h1><%= @item[:title] %></h1>
-      <ul>
+	  <%= yield %>
+      <ol>
         <% sorted_articles.each do |post| %>
         <li>
           <%= link_to post[:title], post.path %> <% if post[:summary] %> - <%=
           post[:summary] %> <% end %>
         </li>
         <% end %>
-      </ul>
+      </ol>
     </div>
 
     <%= render '/partials/sidebar.*' %>
