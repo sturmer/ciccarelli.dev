@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
 group :nanoc do
-  gem 'guard-nanoc'
+  gem 'nanoc-live'
   gem 'kramdown'
   gem 'nokogiri'
   gem 'adsf'
-  gem 'nanoc', '~> 4.11'
+  gem 'nanoc', '~> 4.12'
 end
