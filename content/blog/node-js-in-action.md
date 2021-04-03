@@ -4,7 +4,7 @@ created_at: 2019-12-29
 kind: article
 ---
 
-<a href="https://www.librarything.com/work/20255574/">
+<a href="//www.librarything.com/work/20255574/">
     <img src="/gallery/nodejs-in-action.jpg" width="150" alt="Node.js in Action" />
 </a>
 

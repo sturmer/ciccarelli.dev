@@ -4,7 +4,7 @@ created_at: 2019-01-05
 kind: article
 ---
 
-<a href="https://www.librarything.com/work/22561876/">
+<a href="//www.librarything.com/work/22561876/">
     <img src="/gallery/forge-your-future-with-open-source.jpg" width="150" alt="Forge Your Future with Open Source" />
 </a>
 

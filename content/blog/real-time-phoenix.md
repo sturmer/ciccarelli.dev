@@ -7,7 +7,7 @@ tags:
   - elixir
 ---
 
-<a href="https://www.librarything.com/work/25306228/">
+<a href="//www.librarything.com/work/25306228/">
     <img src="/gallery/real-time-phoenix.jpg" width="150" alt="Real-Time Phoenix" />
 </a>
 

@@ -4,7 +4,7 @@ created_at: 2019-04-06
 kind: article
 ---
 
-<a href="https://www.librarything.com/work/17188/">
+<a href="//www.librarything.com/work/17188/">
     <img src="/gallery/peopleware.jpg" width="150" alt="Peopleware: Productive Projects and Teams" />
 </a>
 

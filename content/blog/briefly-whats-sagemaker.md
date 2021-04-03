@@ -8,7 +8,7 @@ tags:
   - aws
 ---
 
-[SageMaker](https://aws.amazon.com/sagemaker/) is part of the Machine Learning solutions provided by Amazon. These solutions are provided in stages:
+[SageMaker](//aws.amazon.com/sagemaker/) is part of the Machine Learning solutions provided by Amazon. These solutions are provided in stages:
 
 ## Steps for ML using AWS:
 
