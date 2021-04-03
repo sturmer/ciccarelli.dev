@@ -1,5 +1,5 @@
 ---
-title: "Peopleware: Productive Projects and Teams, by Tom DeMarco and Timothy Lister (4/10)"
+title: Review - Peopleware
 created_at: 2019-04-06
 kind: article
 ---

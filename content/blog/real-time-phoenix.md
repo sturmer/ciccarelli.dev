@@ -1,5 +1,5 @@
 ---
-title: "Real-Time Phoenix, by Stephen Bussey (7/10)"
+title: Review - Real-Time Phoenix
 created_at: 2020-12-26
 kind: article
 tags:

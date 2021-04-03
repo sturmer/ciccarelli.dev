@@ -1,5 +1,5 @@
 ---
-title: Designing Data-Intensive Applications, by Martin Kleppmann (5/10)
+title: Review - Designing Data-Intensive Applications
 created_at: 2018-02-17
 kind: article
 ---

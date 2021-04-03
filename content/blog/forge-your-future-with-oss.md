@@ -1,5 +1,5 @@
 ---
-title: Forge Your Future with Open Source, by VM (Vicky) Brasseur (6/10)
+title: Review - Forge Your Future with Open Source
 created_at: 2019-01-05
 kind: article
 ---

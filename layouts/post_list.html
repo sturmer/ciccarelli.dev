@@ -3,14 +3,15 @@
     <div id="main">
       <h1><%= @item[:title] %></h1>
 	  <%= yield %>
-      <ol>
+      <ul>
         <% sorted_articles.each do |post| %>
         <li>
+		[<%= post[:created_at] %>] -
           <%= link_to post[:title], post.path %> <% if post[:summary] %> - <%=
           post[:summary] %> <% end %>
         </li>
         <% end %>
-      </ol>
+      </ul>
     </div>
 
     <%= render '/partials/sidebar.*' %>
