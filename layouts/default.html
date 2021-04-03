@@ -6,6 +6,7 @@
       <p>Published: <%= @item[:created_at] %> | tags: <%= tags_for(@item) %></p>
       <% end %>
       <%= yield %>
+      <%= render '/partials/footer.*' %>
     </div>
     <%= render '/partials/sidebar.*' %>
   </body>

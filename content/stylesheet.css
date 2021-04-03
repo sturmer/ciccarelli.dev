@@ -109,3 +109,7 @@ blockquote {
   padding-left: 1em;
   border-left: 0.3em solid #ccc;
 }
+
+footer {
+  font: 10px normal helvetica, sans-serif;
+}
