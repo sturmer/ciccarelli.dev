@@ -2,11 +2,10 @@
 title: Accessing APIs
 kind: article
 created_at: 2014-03-02
+summary: "Where I use the POCO libraries to play with Rotten Tomatoes API"
 ---
 
 I was curious about all the great sites I know of releasing their API. Twitter, Google, Facebook, Yelp, are only a few examples of websites providing a way to access their services in a programmatic way. In this post, I have investigated a simple but very interesting API, offered by [Rotten Tomatoes](http://rottentomatoes.com "Rotten Tomatoes"), a website about movies.
-
-<!-- more -->
 
 ### Before Coding
 Apparently, most if not all the websites offering API access to their services, require you to register as a developer, in order to provide you with an API key. The registration form for Rotten Tomatoes can be found, for example, at the [Developers' page](http://bit.ly/1eoIiOB "Rotten Tomatoes API").  Once you register an account and request an API key, you can use it to access the API. This kind of accountability is important, because the damage you can do by making tons of requests to a website can easily become an example of DoS attacks. The number of requests is limited, as well (5 per seconds and 10,000 per day).

@@ -2,6 +2,7 @@
 title: How to Finish Projects
 kind: article
 created_at: 2020-04-24
+summary: "Where I discuss what I think are the key elements to finishing projects"
 tags:
  - project management
  - personal projects

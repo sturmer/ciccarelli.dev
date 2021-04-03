@@ -2,6 +2,7 @@
 title: "Budgeter - Overview"
 kind: article
 created_at: 2020-04-24
+summary: "Where I tell my experience with a small side project"
 tags:
  - project management
  - personal projects

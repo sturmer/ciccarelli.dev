@@ -1,21 +1,25 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>ciccarelli.dev - <%= @item[:title] %></title>
-    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/stylesheet.css" />
 
-    <!-- Keep this for stats -->
-    <meta name="generator" content="Nanoc <%= Nanoc::VERSION %>">
+    <meta name="generator" content="Nanoc <%= Nanoc::VERSION %>" />
   </head>
   <body>
     <div id="main">
       <h1><%= @item[:title] %></h1>
-      <% if @item[:created_at] %>
-      <p>Published: <%= @item[:created_at] %> | tags: <%= tags_for(@item) %></p>
-      <% end %>
-      <%= yield %>
+      <ul>
+        <% sorted_articles.each do |post| %>
+        <li>
+          <%= link_to post[:title], post.path %> <% if post[:summary] %> - <%=
+          post[:summary] %> <% end %>
+        </li>
+        <% end %>
+      </ul>
     </div>
+
     <div id="sidebar">
       <h2><%= link_to 'Home', '/' %></h2>
       <h2><%= link_to 'Now', '/now/' %></h2>
@@ -25,10 +29,9 @@
       <h2>Posts</h2>
       <ul>
         <% sorted_articles.each do |post| %>
-          <li><%= link_to post[:title], post.path %></li>
+        <li><%= link_to post[:title], post.path %></li>
         <% end %>
       </ul>
-
     </div>
   </body>
 </html>

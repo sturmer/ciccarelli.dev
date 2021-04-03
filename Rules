@@ -10,6 +10,12 @@ compile '/**/*.html' do
   end
 end
 
+compile '/blog.md' do
+ filter :kramdown
+ layout '/post_list.*'
+ write item.identifier.without_ext + '/index.html'
+end
+
 compile '/**/*.md' do
  filter :kramdown
  filter :colorize_syntax
