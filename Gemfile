@@ -6,5 +6,5 @@ group :nanoc do
   gem 'nokogiri'
   gem 'adsf'
   gem 'nanoc', '~> 4.12'
-  gem 'coderay'
+  gem 'rouge'
 end

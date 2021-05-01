@@ -60,27 +60,50 @@ You might have noticed that what we are doing is actually moving elements from o
 
 ~~~cpp
 struct Moveable {
-    int i;
+  int i;
+  Moveable(const int i) : i(i) { cout << "ctor\n"; }
 
-    Moveable(const int i) : i(i) { cout << "ctor\n"; }
-    Moveable(const Moveable& m) : i(m.i) { cout << "copy ctor\n"; }
-    Moveable& operator=(const Moveable& m) { i = m.i; cout << "copy assignment\n"; return *this; }
-    Moveable(Moveable&& m) : i(m.i) { m.i = 0; cout << "move ctor\n"; }
+  Moveable(const Moveable& m) : i(m.i) {
+    cout << "copy ctor\n";
+  }
 
-    Moveable& operator=(Moveable&& m) {
-        i = m.i;
-        m.i = 0;
-        cout << "move assignment\n";
-        return *this;
-    }
+  Moveable& operator=(const Moveable& m) {
+    i = m.i;
+    cout << "copy assignment\n";
+    return *this;
+  }
+
+  Moveable(Moveable&& m) : i(m.i) {
+    m.i = 0;
+    cout << "move ctor\n";
+  }
+
+  Moveable& operator=(Moveable&& m) {
+    i = m.i;
+    m.i = 0;
+    cout << "move assignment\n";
+    return *this;
+  }
 };
 ~~~
 
 If we use this class in a `copy`, we obtain that, during the execution of the algorithm, the copy assignment operator is chosen to perform the assignment.  Using the `move` algorithm, instead, we use some client code like:
 
 ~~~cpp
-vector<Moveable> v1({Moveable(1),Moveable(3),Moveable(5),Moveable(7)});
-vector<Moveable> v2({Moveable(2),Moveable(4),Moveable(8),Moveable(16)});
+vector<Moveable> v1({
+  Moveable(1),
+  Moveable(3),
+  Moveable(5),
+  Moveable(7)
+});
+
+vector<Moveable> v2({
+  Moveable(2),
+  Moveable(4),
+  Moveable(8),
+  Moveable(16)
+});
+
 move(v1.begin(), v1.end(), v2.begin());
 cout << "v1: " << v1 << '\n';
 cout << "v2: " << v2 << '\n';
@@ -132,7 +155,8 @@ Finally, the suffix `_n` version can be used to directly specify the number of e
 copy_n(src.begin(), 10, dest.begin())
 ~~~
 
-instead of specifying the more cumbersome `src.begin()+10`.
+
+instead of specifying the more cumbersome `src.begin() + 10`.
 
 The `move` algorithm, instead, only offers the variation to move backward, called, indeed, `move_backward`.
 
@@ -141,12 +165,12 @@ We have started to have a brief look at the the sequence modifying algorithms.  
 
 |Algorithm|Example|
 |---- |---- |
-|<code>copy</code>|copy(src.begin(), src.end(), dest.begin())|
-|<code>copy_backward</code>|copy_backward(src.begin(), src.begin()+4, src.begin()+2)|
-|<code>move</code>|move(src.begin(), src.end(), dest.begin())|
-|<code>move_backward</code>|move(src.begin(), src.begin()+10, src.begin()+3)|
-|<code>copy_if</code>|copy_if(src.begin(), src.end(), dest.begin(), [](int i){ return i > 10; })|
-|<code>copy_n</code>|copy_n(src.begin(), 10, dest.begin())|
+|`copy`|`copy(src.begin(), src.end(), dest.begin())`|
+|`copy_backward`|`copy_backward(src.begin(), src.begin() + 4, src.begin() + 2)`|
+|`move`|`move(src.begin(), src.end(), dest.begin())`|
+|`move_backward`|`move(src.begin(), src.begin() + 10, src.begin() + 3)`|
+|`copy_if`|`copy_if(src.begin(), src.end(), dest.begin(), [](int i){ return i > 10; })`|
+|`copy_n`|`copy_n(src.begin(), 10, dest.begin())`|
 
 [p4]: /blog/2014/01/14/stl-algorithms-part-4
 [iter]: /blog/2014/02/17/iterators-and-algorithms

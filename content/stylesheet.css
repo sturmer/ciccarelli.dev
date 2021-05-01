@@ -113,3 +113,19 @@ blockquote {
 footer {
   font: 10px normal helvetica, sans-serif;
 }
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:2px solid #000000;
+}
+
+th{
+    border:2px solid #000000;
+    padding: .1em;
+}
+
+td{
+    border:1px solid #000000;
+    padding: .5em;
+}
