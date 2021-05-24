@@ -17,11 +17,16 @@ compile '/blog.md' do
  write item.identifier.without_ext + '/index.html'
 end
 
-compile '/(at|beta).md' do
+compile '/at.md' do
  filter :kramdown
  layout '/glia_layout.*'
 
- puts "item: #{item[:glia_url]}"
+ write item.identifier.without_ext + '/index.html'
+end
+
+compile '/beta.md' do
+ filter :kramdown
+ layout '/glia_layout.*'
 
  write item.identifier.without_ext + '/index.html'
 end
