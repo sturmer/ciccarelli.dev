@@ -1,6 +1,10 @@
 <%= render '/partials/glia_head.*' %>
   <body>
-    <%= yield %>
-    <%= render '/partials/footer.*' %>
+    <div id="main">
+      <h1><%= @item[:title] %></h1>
+      <%= yield %>
+      <%= render '/partials/footer.*' %>
+    </div>
+    <%= render '/partials/sidebar.*' %>
   </body>
 </html>
